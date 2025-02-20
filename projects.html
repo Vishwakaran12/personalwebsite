@@ -3,86 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Academic Portfolio</title>
+    <title>Projects - Vishwa karan</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #ffffff;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .name-title {
-            font-size: 1.5rem;
-            color: #333;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #666;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #2196F3;
-        }
-
         .project-card {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2.5rem;
             margin-bottom: 2rem;
-            transition: transform 0.3s ease;
-            border: 1px solid #e9ecef;
+            transition: all 0.4s ease;
+            color: white;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .project-title {
-            font-size: 1.5rem;
-            color: #2196F3;
+            font-size: 1.8rem;
+            color: white;
             margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-timeline {
+            font-size: 0.9rem;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            white-space: nowrap;
+            backdrop-filter: blur(5px);
         }
 
         .project-description {
             margin-bottom: 1.5rem;
-        }
-
-        .key-features {
-            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         }
 
         .key-features h4 {
-            margin-bottom: 0.5rem;
-            color: #333;
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .key-features ul {
@@ -91,97 +62,80 @@
         }
 
         .key-features li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             padding-left: 1.5rem;
             position: relative;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         }
 
         .key-features li::before {
             content: "•";
-            color: #2196F3;
+            color: white;
             position: absolute;
             left: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        .skills-section {
-            margin-top: 1.5rem;
-        }
-
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
+        .skills-section h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .skill-tag {
-            background: #e3f2fd;
-            color: #1976d2;
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
             font-size: 0.9rem;
             font-weight: 500;
+            backdrop-filter: blur(5px);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
         }
 
-        h2 {
-            font-size: 2rem;
-            color: #333;
-            margin-bottom: 2rem;
+        .skill-tag:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
 
-        .project-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
+        .projects-title {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 3rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            display: inline-block;
         }
 
-        .project-title-group {
-            flex-grow: 1;
-        }
-
-        .project-timeline {
-            font-size: 0.9rem;
-            color: #1976d2;
-            background: #e3f2fd;
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
-            font-weight: 500;
-            white-space: nowrap;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-
-            .project-card {
-                padding: 1.5rem;
-            }
-
-            .project-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
+        .projects-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), transparent);
+            border-radius: 3px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav>
+        <nav class="glass-nav">
             <a href="index.html" class="name-title">Vishwa karan</a>
             <div class="nav-links">
-                <a href="index.html">Home</a> <!-- Link added for the homepage -->
+                <a href="index.html">Home</a>
                 <a href="projects.html">Projects</a>
                 <a href="files/Belaganti_Vishwa Resume1.pdf" target="_blank">Resume</a>
             </div>
         </nav>
 
-        <h2>Projects</h2>
+        <h2 class="projects-title" data-aos="fade-right">Projects</h2>
         
         <!-- HackWest Texas -->
-        <div class="project-card">
+        <div class="project-card" data-aos="fade-up" data-aos-delay="100">
             <div class="project-header">
                 <div class="project-title-group">
                     <h3 class="project-title">HackWest Texas - Wild West 3D Game</h3>
@@ -214,7 +168,7 @@
         </div>
 
         <!-- UI/UX Basics -->
-        <div class="project-card">
+        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
             <div class="project-header">
                 <div class="project-title-group">
                     <h3 class="project-title">UI/UX Basics Project</h3>
@@ -245,7 +199,7 @@
         </div>
 
         <!-- Red Wine Quality Test -->
-        <div class="project-card">
+        <div class="project-card" data-aos="fade-up" data-aos-delay="300">
             <div class="project-header">
                 <div class="project-title-group">
                     <h3 class="project-title">Red Wine Quality Test</h3>
@@ -278,7 +232,7 @@
         </div>
 
         <!-- Senses Obby -->
-        <div class="project-card">
+        <div class="project-card" data-aos="fade-up" data-aos-delay="400">
             <div class="project-header">
                 <div class="project-title-group">
                     <h3 class="project-title">Senses Obby</h3>
@@ -309,7 +263,14 @@
                 </div>
             </div>
         </div>
-
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
 </body>
 </html>
