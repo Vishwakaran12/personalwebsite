@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates - Vishwa karan</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .certificate-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            color: white;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .certificate-issuer {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .issuer-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .certificate-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .certificate-date {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+        }
+
+        .certificate-id {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+            font-family: monospace;
+        }
+
+        .certificate-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-badge {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: white;
+            backdrop-filter: blur(5px);
+        }
+
+        .certificate-description {
+            margin: 1rem 0;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="glass-nav">
+            <a href="index.html" class="name-title">Vishwa karan</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="certificates.html">Certificates</a>
+                <a href="files/Belaganti_Vishwa Resume1.pdf" target="_blank">Resume</a>
+            </div>
+        </nav>
+
+        <h2 class="section-title" data-aos="fade-right">Certifications</h2>
+        
+        <div class="certificates-grid">
+            <!-- Google Cybersecurity Certificate -->
+            <div class="certificate-card" data-aos="fade-up">
+                <div class="certificate-issuer">
+                    <img src="images/google.png" alt="Google" class="issuer-logo">
+                    <h3>Google</h3>
+                </div>
+                <h4 class="certificate-title"><a href="https://www.coursera.org/account/accomplishments/specialization/BDC1NZBMCV98" target="_blank">Google Cybersecurity</a></h4>
+                <div class="certificate-date">Issued Feb 2025</div>
+                <div class="certificate-id">Credential ID: BDC1NZBMCV98</div>
+                <p class="certificate-description">
+                    Completed the Google Cybersecurity Professional Certification on Coursera, gaining comprehensive skills in threat detection, risk management, and security operations.
+                </p>
+            </div>
+
+            <!-- UI/UX Certificate -->
+            <div class="certificate-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="certificate-issuer">
+                    <img src="https://developers.google.com/site-assets/images/home/google_developers_logo.png" alt="GDSC" class="issuer-logo">
+                    <h3>GDSC</h3>
+                </div>
+                <h4 class="certificate-title"><a href="https://coursera.org/verify/XF2ZBM54NRHW" target="_blank">UI/UX</a></h4>
+                <div class="certificate-date">Issued Dec 2023 · Expires Dec 2027</div>
+                <div class="certificate-id">Credential ID: TXDSCTTUUIF230920030002</div>
+                <div class="certificate-skills">
+                    <span class="skill-badge">User Experience (UX)</span>
+                    <span class="skill-badge">UI/UX</span>
+                </div>
+            </div>
+
+            <!-- Web Development Certificate -->
+            <div class="certificate-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="certificate-issuer">
+                    <img src="https://developers.google.com/site-assets/images/home/google_developers_logo.png" alt="GDSC" class="issuer-logo">
+                    <h3>GDSC</h3>
+                </div>
+                <h4 class="certificate-title"><a href="https://coursera.org/verify/MCVMG3VNG2PJ" target="_blank">Web Development Certification</a></h4>
+                <div class="certificate-date">Issued Dec 2023 · Expires Dec 2027</div>
+                <div class="certificate-id">Credential ID: TXDSCTTUWBF2309100200023</div>
+                <div class="certificate-skills">
+                    <span class="skill-badge">Visual Studio</span>
+                    <span class="skill-badge">Web Development</span>
+                    <span class="skill-badge">Interaction Design</span>
+                </div>
+            </div>
+
+            <!-- Additional Certificates -->
+            <div class="certificate-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="certificate-issuer">
+                    <img src="images/google.png" alt="Google" class="issuer-logo">
+                    <h3>Google</h3>
+                </div>
+                <h4 class="certificate-title"><a href="https://coursera.org/verify/FKB88YYYQEYS" target="_blank">Connect and Protect: Networks and Network Security</a></h4>
+                <div class="certificate-date">Issued Dec 2023</div>
+                <p class="certificate-description">Learned essential network security techniques and how to protect networks from threats.</p>
+            </div>
+
+            <div class="certificate-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="certificate-issuer">
+                    <img src="images/google.png" alt="Google" class="issuer-logo">
+                    <h3>Google</h3>
+                </div>
+                <h4 class="certificate-title"><a href="https://www.coursera.org/account/accomplishments/records/2AMAEFNVJGMA" target="_blank">Tools of the Trade: Linux and SQL</a></h4>
+                <div class="certificate-date">Issued Jan 2024</div>
+                <div class="certificate-id">Credential ID: 2AMAEFNVJGMA</div>
+                <p class="certificate-description">Gained hands-on experience with Linux and SQL tools in the context of cybersecurity.</p>
+            </div>
+
+            <div class="certificate-card" data-aos="fade-up" data-aos-delay="700">
+                <div class="certificate-issuer">
+                    <img src="images/google.png" alt="Google" class="issuer-logo">
+                    <h3>Google</h3>
+                </div>
+                <h4 class="certificate-title"><a href="https://www.coursera.org/account/accomplishments/records/SQY9STXY9EVC" target="_blank">Sound the Alarm: Detection and Response</a></h4>
+                <div class="certificate-date">Issued Jul 2024</div>
+                <div class="certificate-id">Credential ID: SQY9STXY9EVC</div>
+                <p class="certificate-description">Learned about detection and response strategies for cybersecurity incidents.</p>
+            </div>
+
+            <div class="certificate-card" data-aos="fade-up" data-aos-delay="800">
+                <div class="certificate-issuer">
+                    <img src="images/google.png" alt="Google" class="issuer-logo">
+                    <h3>Google</h3>
+                </div>
+                <h4 class="certificate-title"><a href="https://www.coursera.org/account/accomplishments/records/WGL7WKJPKZDE" target="_blank">Assets, Threats, and Vulnerabilities</a></h4>
+                <div class="certificate-date">Issued Jul 2024</div>
+                <div class="certificate-id">Credential ID: WGL7WKJPKZDE</div>
+                <p class="certificate-description">Studied the key concepts around cybersecurity threats, vulnerabilities, and assets.</p>
+            </div>
+
+            <div class="certificate-card" data-aos="fade-up" data-aos-delay="900">
+                <div class="certificate-issuer">
+                    <img src="images/google.png" alt="Google" class="issuer-logo">
+                    <h3>Google</h3>
+                </div>
+                <h4 class="certificate-title"><a href="https://www.coursera.org/account/accomplishments/verify/GXHUDFR7JEK2" target="_blank">Automate Cybersecurity Tasks with Python</a></h4>
+                <div class="certificate-date">Issued Feb 2025</div>
+                <div class="certificate-id">Credential ID: GXHUDFR7JEK2</div>
+                <p class="certificate-description">Learned how to automate cybersecurity tasks using Python.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+</html>
