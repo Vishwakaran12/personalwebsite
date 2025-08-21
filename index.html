@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Vishwa Belaganti - Academic Profile</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2025-08-21-5">
     <link rel="stylesheet" href="friendship.css">
     <link rel="stylesheet" href="game-fixes.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -183,41 +183,63 @@
             once: true
         });
 
-        // Initialize Particles.js
+        // Animate language progress bars on page load
+        setTimeout(() => {
+            document.querySelectorAll('.progress').forEach(bar => {
+                bar.style.width = getComputedStyle(bar).getPropertyValue('--target-width');
+            });
+        }, 500);
+
+        // Initialize Enhanced Particles.js with better interactivity
         particlesJS('particles-js', {
             particles: {
-                number: { value: 25, density: { enable: true, value_area: 1000 } },
-                color: { value: ['#d4af37', '#6c63ff'] },
-                shape: { type: "circle" },
-                opacity: { value: 0.5, random: true },
-                size: { value: 3, random: true },
+                number: { value: 120, density: { enable: true, value_area: 800 } },
+                color: { value: ['#c9a876', '#b8932b', '#a67c3a', '#1e2a4a', '#2d1b69', '#4a3c5c'] },
+                shape: {
+                    type: ['circle', 'triangle', 'polygon'],
+                    polygon: { nb_sides: 6 }
+                },
+                opacity: {
+                    value: 0.6,
+                    random: true,
+                    anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+                },
+                size: {
+                    value: 4,
+                    random: true,
+                    anim: { enable: true, speed: 4, size_min: 0.5, sync: false }
+                },
                 line_linked: { 
                     enable: true, 
                     distance: 150, 
-                    color: "#d4af37", 
-                    opacity: 0.4, 
+                    color: "#c9a876", 
+                    opacity: 0.3, 
                     width: 1 
                 },
                 move: { 
                     enable: true, 
-                    speed: 1, 
+                    speed: 2, 
                     direction: "none", 
-                    random: false,
+                    random: true,
                     straight: false,
                     out_mode: "out",
-                    bounce: false
+                    bounce: false,
+                    attract: { enable: true, rotateX: 600, rotateY: 1200 }
                 }
             },
             interactivity: {
                 detect_on: "canvas",
                 events: {
-                    onhover: { enable: true, mode: "grab" },
-                    onclick: { enable: true, mode: "push" },
+                    onhover: { enable: true, mode: ['repulse', 'bubble'] },
+                    onclick: { enable: true, mode: 'push' },
                     resize: true
                 },
                 modes: {
-                    grab: { distance: 140, line_linked: { opacity: 1 } },
-                    push: { particles_nb: 4 }
+                    grab: { distance: 400, line_linked: { opacity: 1 } },
+                    bubble: { distance: 250, size: 8, duration: 2, opacity: 0.8, speed: 3 },
+                    repulse: { distance: 200, duration: 0.4 },
+                    push: { particles_nb: 4 },
+                    remove: { particles_nb: 2 }
                 }
             },
             retina_detect: true

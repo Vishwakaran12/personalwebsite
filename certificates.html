@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificates - Vishwa karan</title>
-    <link rel="stylesheet" href="styles.css">
+        <title>Vishwa Belaganti - Certificates</title>
+    <link rel="stylesheet" href="styles.css?v=2025-08-21-4">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     
@@ -30,11 +30,73 @@
         
         .certificates-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
             width: 100%;
-            grid-auto-rows: minmax(min-content, max-content);
+            align-items: start;
+            justify-content: center;
+        }
+        
+        .certificate-card {
+            height: auto;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .certificate-card h3 {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .certificate-card .brand-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .certificate-card .brand-header img {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+        }
+        
+        .certificate-card .brand-header .brand-name {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .certificate-card .certificate-details {
+            flex-grow: 1;
+            margin-bottom: 1rem;
+        }
+        
+        .certificate-card .certificate-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+        
+        .certificate-card .tag {
+            background: rgba(201, 168, 118, 0.2);
+            color: var(--champagne-gold);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(201, 168, 118, 0.3);
         }
         
         @media (max-width: 1200px) {

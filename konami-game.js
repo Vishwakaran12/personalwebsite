@@ -255,37 +255,39 @@ document.addEventListener('DOMContentLoaded', function() {
         if (key.toLowerCase() === requiredKey.toLowerCase()) {
             console.log('Correct key at position:', konamiCodePosition);
             
-            // Always show the progress bar on first correct key
-            if (konamiCodePosition === 0) {
+            // Increment position first
+            konamiCodePosition++;
+            
+            // Show the progress bar only after the first 3 correct keys (Up, Up, Down)
+            if (konamiCodePosition === 3) {
                 progressBarContainer.style.display = 'block';
                 progressBarContainer.style.zIndex = '999999'; // Super high z-index to ensure visibility
                 progressBarContainer.style.position = 'fixed';
                 progressBarContainer.style.top = '10px';
-                console.log('Showing progress bar on first key with high z-index');
+                console.log('Showing progress bar after first 3 keys with high z-index');
                 console.log('Progress bar element:', progressBarContainer);
                 console.log('Progress bar display:', progressBarContainer.style.display);
                 console.log('Progress bar z-index:', progressBarContainer.style.zIndex);
-                showHint('You found a secret pattern! Try using arrow keys to continue the sequence...');
+                showHint('Great! You found the secret pattern! Continue with arrow keys to unlock more...');
             }
             
-            // Increment position
-            konamiCodePosition++;
-            
-            // Update the progress bar
-            const progress = (konamiCodePosition / konamiCode.length) * 100;
-            progressBar.style.width = `${progress}%`;
-            progressLabel.textContent = `SECRET CODE PROGRESS (${konamiCodePosition}/${konamiCode.length})`;
-            
-            // Update the sequence display
-            updateKonamiSequenceDisplay();
+            // Update the progress bar (only if it's visible)
+            if (konamiCodePosition >= 3) {
+                const progress = (konamiCodePosition / konamiCode.length) * 100;
+                progressBar.style.width = `${progress}%`;
+                progressLabel.textContent = `SECRET CODE PROGRESS (${konamiCodePosition}/${konamiCode.length})`;
+                
+                // Update the sequence display
+                updateKonamiSequenceDisplay();
+            }
             
             // Show different hints based on position in the sequence
             if (konamiCodePosition === 3) {
-                // After ↑↑↓
-                showHint('Good! You\'ve found the first part of the pattern. Keep going with arrow keys!');
+                // After ↑↑↓ - this is when the progress bar first appears
+                showHint('Great! You found the secret pattern! Continue with arrow keys to unlock more...');
             } else if (konamiCodePosition === 7) {
                 // After ↑↑↓↓←→←→
-                showHint('Almost there! Now you need two letters at the start of the alphabet...');
+                showHint('Excellent! Almost there! Now you need two letters at the start of the alphabet...');
             } else if (konamiCodePosition === 9) {
                 // After B and A letters
                 showHint('Complete the sacred sequence with the button that begins the journey...');
@@ -313,6 +315,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Reset the position
             konamiCodePosition = 0;
+            
+            // Hide the progress bar since we're resetting
+            progressBarContainer.style.display = 'none';
             
             // Update sequence display
             updateKonamiSequenceDisplay();

@@ -29,12 +29,14 @@
     --night-gradient: linear-gradient(45deg, #1e2a4a, #2d1b69, #4a3c5c);
     --main-bg-gradient: linear-gradient(-45deg, #0f0f0f, #1a1a1a, #2a2a2a, #1e1e1e);
     
-    /* Comfortable text colors */
-    --primary-text: #f5f5f5;
-    --secondary-text: #d0d0d0;
-    --muted-text: #b8b8b8;
+    /* Improved text colors for better readability */
+    --primary-text: #ffffff;
+    --secondary-text: #e8e8e8;
+    --muted-text: #c8c8c8;
     --accent-text: #c9a876;
     --gold-text: #d4c5a9;
+    --bright-white: #ffffff;
+    --title-text: #f0f0f0;
 }
 
 body {
@@ -52,6 +54,73 @@ body {
     scroll-behavior: smooth;
 }
 
+/* Global text visibility improvements */
+h1, h2, h3, h4, h5, h6 {
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: none;
+    font-weight: 700;
+    opacity: 1 !important;
+}
+
+p {
+    color: var(--secondary-text);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Special styling for About Me and Languages sections to match name */
+.profile-content h1,
+.profile-content h2,
+.languages h2,
+.languages h3,
+#about-me,
+.language-skill h3 {
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 15px rgba(201, 168, 118, 0.3);
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+/* About Me section text styling */
+.profile-content p,
+.profile-content .content-block p {
+    color: var(--champagne-gold) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    line-height: 1.7;
+}
+
+/* Languages section text styling */
+.languages .content-block,
+.languages .language-skill,
+.languages .language-header {
+    color: var(--champagne-gold) !important;
+}
+
+.languages .language-header strong {
+    color: var(--antique-gold) !important;
+    font-weight: 600;
+}
+
+/* Ensure all content has proper contrast */
+.glass-card h1,
+.glass-card h2, 
+.glass-card h3,
+.glass-card h4,
+.glass-card h5,
+.glass-card h6 {
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.glass-card p {
+    color: var(--secondary-text);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+
 /* Particles background */
 #particles-js {
     position: fixed;
@@ -61,6 +130,66 @@ body {
     height: 100%;
     z-index: -1;
     pointer-events: none;
+}
+
+/* Project Card Styling - Enhanced Visibility */
+.project-card {
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--champagne-gold);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 
+                0 2px 8px rgba(201, 168, 118, 0.2),
+                inset 0 1px 0 rgba(245, 245, 245, 0.1);
+    border-radius: 15px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--night-gradient);
+    opacity: 0.02;
+    z-index: -1;
+}
+
+.project-card h1,
+.project-card h2, 
+.project-card h3,
+.project-card h4,
+.project-card h5,
+.project-card h6 {
+    background: var(--gold-gradient) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    text-shadow: none !important;
+    font-weight: 700 !important;
+    margin-bottom: 1rem;
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+.project-card p {
+    color: var(--secondary-text);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 
+                0 4px 12px rgba(201, 168, 118, 0.3),
+                inset 0 1px 0 rgba(245, 245, 245, 0.15);
+    border-color: var(--soft-gold);
 }
 
 /* Mobile Responsive Optimizations - Content Focus */
@@ -191,7 +320,9 @@ body {
     .skill-card h3 {
         font-size: 1.2rem;
         margin: 0 0 12px 0;
-        color: var(--gold-text);
+        color: #ffffff;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        font-weight: 600;
     }
     
     .skill-card p {
@@ -224,7 +355,9 @@ body {
     .timeline-item h3 {
         font-size: 1.2rem;
         margin: 0 0 8px 0;
-        color: var(--gold-text);
+        color: #ffffff;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        font-weight: 600;
     }
     
     .timeline-item h4 {
@@ -256,15 +389,17 @@ body {
         padding: 20px 15px;
         margin: 0;
         border-radius: 12px;
-        background: rgba(26, 26, 26, 0.9);
+        background: rgba(26, 26, 26, 0.95);
         border: 1px solid var(--champagne-gold);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     }
     
     .project-card h3 {
         font-size: 1.2rem;
         margin: 0 0 12px 0;
-        color: var(--gold-text);
+        color: #ffffff;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        font-weight: 600;
     }
     
     .project-card p {
@@ -301,7 +436,9 @@ body {
         text-align: center;
         margin: 20px 0;
         padding: 0 15px;
-        color: var(--elegant-gold);
+        color: #ffffff;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        font-weight: 600;
     }
     
     /* Social links */
@@ -420,18 +557,26 @@ body {
     .project-card,
     .contact-card {
         padding: 15px 12px;
+        background: rgba(26, 26, 26, 0.95);
+        border: 1px solid var(--champagne-gold);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     }
     
     .skill-card h3,
     .timeline-item h3,
     .project-card h3 {
         font-size: 1.1rem;
+        color: #ffffff;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        font-weight: 600;
     }
     
     .skill-card p,
     .timeline-item p,
     .project-card p {
         font-size: 12px;
+        color: var(--secondary-text);
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
     }
     
     .social-links {
@@ -586,6 +731,7 @@ body {
     background-color: rgba(255, 255, 255, 0.1);
     overflow: hidden;
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-top: 8px;
 }
 
 .progress {
@@ -594,6 +740,16 @@ body {
     transition: width 2s ease;
     position: relative;
     overflow: hidden;
+    width: 0%;
+}
+
+.progress.animated-progress {
+    animation: progressAnimation 2s ease-out forwards;
+}
+
+@keyframes progressAnimation {
+    from { width: 0%; }
+    to { width: var(--target-width); }
 }
 
 .progress::after {
@@ -613,15 +769,35 @@ body {
 }
 
 .english-progress {
-    background: linear-gradient(90deg, var(--elegant-gold), var(--subtle-accent));
+    background: linear-gradient(90deg, var(--champagne-gold), var(--antique-gold));
+    --target-width: 100%;
 }
 
 .telugu-progress {
-    background: linear-gradient(90deg, var(--subtle-accent), var(--elegant-gold));
+    background: linear-gradient(90deg, var(--antique-gold), var(--champagne-gold));
+    --target-width: 100%;
 }
 
 .hindi-progress {
-    background: linear-gradient(90deg, var(--soft-silver), var(--subtle-accent));
+    background: linear-gradient(90deg, var(--bronze-gold), var(--antique-gold));
+    --target-width: 60%;
+}
+
+.language-skill {
+    margin-bottom: 1.5rem;
+}
+
+.language-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.skill-percentage {
+    color: var(--champagne-gold);
+    font-weight: 600;
+    font-size: 0.9rem;
 }
 
 .language-skill {
@@ -1461,11 +1637,11 @@ body {
 }
 
 .quality-title {
-    color: var(--gold-text);
+    color: #ffffff;
     font-size: 1.4rem;
     margin-bottom: 1rem;
     font-weight: 600;
-    text-shadow: 0 0 10px rgba(201, 168, 118, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     letter-spacing: 0.5px;
 }
 
@@ -1532,11 +1708,12 @@ body {
 /* Content Styling */
 .section-title {
     font-size: 2.2rem;
-    color: var(--gold-text);
+    color: #ffffff;
     margin-bottom: 2rem;
     position: relative;
-    text-shadow: 0 0 15px rgba(201, 168, 118, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     letter-spacing: 1px;
+    font-weight: 600;
 }
 
 .section-title::after {
