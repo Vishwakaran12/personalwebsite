@@ -7,12 +7,46 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
+    <!-- 3D and Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="snake-game.js"></script>
+    <script src="pong-game.js"></script>
+    <script src="interactive-options.js"></script>
+    <script src="games.js"></script>
+    <script src="chatbot.js"></script>
+    <script src="konami-game.js"></script>
+    <script src="trivia-quiz.js"></script>
+    
     <style>
+        /* Custom content-wrapper for certificates page */
+        .content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
         .certificates-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 2rem;
             margin-top: 2rem;
+            width: 100%;
+            grid-auto-rows: minmax(min-content, max-content);
+        }
+        
+        @media (max-width: 1200px) {
+            .certificates-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .certificates-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .certificate-card {
@@ -23,11 +57,35 @@
             padding: 2rem;
             transition: all 0.4s ease;
             color: white;
+            transform-style: preserve-3d;
+            position: relative;
+            overflow: hidden;
+            max-width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .certificate-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+            z-index: 1;
+        }
+
+        .certificate-card:hover::before {
+            left: 100%;
         }
 
         .certificate-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px) rotateY(5deg) rotateX(5deg) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+                        0 0 30px rgba(255, 255, 255, 0.1);
             background: rgba(255, 255, 255, 0.15);
         }
 
@@ -36,6 +94,8 @@
             align-items: center;
             gap: 1rem;
             margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
         }
 
         .issuer-logo {
@@ -43,11 +103,24 @@
             height: 40px;
             border-radius: 8px;
             object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .certificate-card:hover .issuer-logo {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .certificate-title {
             font-size: 1.4rem;
             margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--elegant-gold), var(--soft-silver), var(--classy-white), var(--subtle-accent));
+            background-size: 400% 400%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: elegant-shimmer 4s ease infinite;
+            position: relative;
+            z-index: 2;
             color: white;
             font-weight: 600;
             line-height: 1.4;
@@ -90,19 +163,31 @@
     </style>
 </head>
 <body>
+    <div id="particles-js"></div>
+    
+    <!-- Floating 3D Elements -->
+    <div class="floating-element morphing-shape" style="top: 10%; left: 10%;"></div>
+    <div class="floating-element morphing-shape" style="top: 20%; right: 15%; animation-delay: -2s;"></div>
+    <div class="floating-element morphing-shape" style="bottom: 15%; left: 20%; animation-delay: -4s;"></div>
+    <div class="floating-element morphing-shape" style="bottom: 25%; right: 10%; animation-delay: -6s;"></div>
+
     <div class="container">
-        <nav class="glass-nav">
-            <a href="index.html" class="name-title">Vishwa karan</a>
+        <nav class="glass-nav interactive-card">
+            <a href="index.html" class="name-title holographic-text">Vishwa karan</a>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="projects.html">Projects</a>
                 <a href="certificates.html">Certificates</a>
-                <a href="files/Vishwa_Belaganti_Resume_Computerscience.pdf" target="_blank">Resume</a>
+                <a href="files/Vishwa_Belaganti_Resume 2025.pdf" target="_blank">Resume</a>
             </div>
         </nav>
 
-        <h2 class="section-title" data-aos="fade-right">Certifications</h2>
-        
+        <div class="page-header">
+            <h2 class="page-title holographic-text" data-aos="fade-down">Certifications</h2>
+            <p class="page-subtitle" data-aos="fade-up" data-aos-delay="200">Professional achievements and continuous learning journey</p>
+        </div>
+
+        <div class="content-wrapper">
         <div class="certificates-grid">
             <!-- Google Cybersecurity Certificate -->
             <div class="certificate-card" data-aos="fade-up">
@@ -205,13 +290,250 @@
             </div>
 
         </div>
+        </div>
+    </div>
+
+    <!-- Cyberpunk Masked Character -->
+    <div class="floating-character" id="floating-character">
+        <div class="character-avatar">
+            <div class="character-hood">
+                <div class="hood-pattern"></div>
+            </div>
+            <div class="character-face">
+                <div class="character-eyes">
+                    <div class="eye"></div>
+                    <div class="eye"></div>
+                </div>
+            </div>
+            <div class="character-mask">
+                <div class="mask-pattern"></div>
+            </div>
+        </div>
+    </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
+        // Initialize AOS
         AOS.init({
             duration: 1000,
             once: true
+        });
+
+        // Initialize Particles.js with elegant effect
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 30, density: { enable: true, value_area: 800 } },
+                color: { value: ['#d4af37', '#6c63ff', '#c0c0c0'] },
+                shape: { type: 'polygon', polygon: { nb_sides: 6 } },
+                opacity: { value: 0.25, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 100,
+                    color: '#d4af37',
+                    opacity: 0.15,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 1.5,
+                    direction: 'none',
+                    random: true,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'bubble' },
+                    onclick: { enable: false },
+                    resize: true
+                },
+                modes: {
+                    bubble: { distance: 200, size: 6, duration: 2, opacity: 0.4, speed: 2 }
+                }
+            },
+            retina_detect: true
+        });
+
+        // GSAP Animations for certificate cards
+        const certificateCards = document.querySelectorAll('.certificate-card');
+        certificateCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, { 
+                    rotationY: 5, 
+                    rotationX: 5, 
+                    scale: 1.02, 
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, { 
+                    rotationY: 0, 
+                    rotationX: 0, 
+                    scale: 1, 
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+        });
+
+        // Parallax scrolling effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelectorAll('.floating-element');
+            const speed = 0.4;
+
+            parallax.forEach(element => {
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+
+        // Interactive nav effects
+        const interactiveNav = document.querySelector('.interactive-card');
+        if (interactiveNav) {
+            interactiveNav.addEventListener('mouseenter', () => {
+                gsap.to(interactiveNav, { 
+                    rotationY: 3, 
+                    scale: 1.02, 
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+            
+            interactiveNav.addEventListener('mouseleave', () => {
+                gsap.to(interactiveNav, { 
+                    rotationY: 0, 
+                    scale: 1, 
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+        }
+
+        // Certificate logo rotation effect
+        const logos = document.querySelectorAll('.issuer-logo');
+        logos.forEach(logo => {
+            logo.addEventListener('mouseenter', () => {
+                gsap.to(logo, { 
+                    rotation: 360, 
+                    scale: 1.2, 
+                    duration: 0.5,
+                    ease: "back.out(1.7)"
+                });
+            });
+            
+            logo.addEventListener('mouseleave', () => {
+                gsap.to(logo, { 
+                    rotation: 0, 
+                    scale: 1, 
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+        });
+        
+        // Enhanced Character Guide for Certificates Page
+        const character = document.getElementById('floating-character');
+        const speech = document.getElementById('character-speech');
+        const chatContainer = document.getElementById('chatContainer');
+        const chatInput = document.getElementById('chatInput');
+        const chatSend = document.getElementById('chatSend');
+        let speechTimeout;
+
+        // Show initial helpful message and ensure always visible
+        const speechText = speech.querySelector('.speech-text');
+        speechText.textContent = "🏆 Certificates loaded! Click me for credential tips!";
+        
+        // Make bot always visible unless user specifically hides it
+        speech.style.opacity = '1';
+        speech.style.transform = 'translateY(0)';
+        speech.classList.add('show');
+
+        // Single click for page-specific tips
+        character.addEventListener('click', () => {
+            if (!vishwaBot.botVisible) {
+                speechText.textContent = "I'm hidden! Say 'show vishwa' to bring me back!";
+                return;
+            }
+            
+            if (vishwaBot.chatMode) return; // Don't show tips in chat mode
+            
+            const tip = vishwaBot.getTips();
+            speechText.textContent = tip;
+            
+            // Animate character
+            gsap.to(character, { 
+                rotation: 5, 
+                scale: 1.15, 
+                duration: 0.3,
+                ease: "power2.out",
+                onComplete: () => {
+                    gsap.to(character, { 
+                        rotation: 0, 
+                        scale: 1, 
+                        duration: 0.4,
+                        ease: "elastic.out(1, 0.3)"
+                    });
+                }
+            });
+            
+            // Auto-reset to default message
+            clearTimeout(speechTimeout);
+            speechTimeout = setTimeout(() => {
+                speechText.textContent = "🏆 Click for certificate tips! (Double-click to chat!)";
+            }, 6000);
+        });
+
+        // Double click to enter chat mode
+        character.addEventListener('dblclick', () => {
+            if (!vishwaBot.botVisible) return;
+            
+            vishwaBot.chatMode = !vishwaBot.chatMode;
+            
+            if (vishwaBot.chatMode) {
+                speechText.textContent = "💬 Chat mode activated! Ask me about my certifications or say 'hide' to make me disappear!";
+                chatContainer.style.display = 'flex';
+                setTimeout(() => chatInput.focus(), 300);
+            } else {
+                speechText.textContent = "🏆 Back to tip mode! Click me for certificate tips!";
+                chatContainer.style.display = 'none';
+            }
+        });
+
+        // Enhanced chat functionality
+        async function sendChatMessage() {
+            const userMessage = chatInput.value.trim();
+            if (!userMessage) return;
+            
+            // Show user message briefly
+            speechText.textContent = `You: ${userMessage}`;
+            chatInput.value = '';
+            
+            // Get bot response with new features
+            setTimeout(async () => {
+                const botResponse = await vishwaBot.getChatResponse(userMessage);
+                speechText.textContent = botResponse;
+                
+                // Handle bot visibility
+                if (!vishwaBot.botVisible) {
+                    setTimeout(() => {
+                        speech.style.opacity = '0.3';
+                        speechText.textContent = vishwaBot.responses.hidden[0];
+                    }, 3000);
+                }
+            }, 800);
+        }
+
+        chatSend.addEventListener('click', sendChatMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendChatMessage();
         });
     </script>
 </body>

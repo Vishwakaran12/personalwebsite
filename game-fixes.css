@@ -1,0 +1,31 @@
+/* Game fixes for alignment and z-index issues */
+.game-container,
+#snake-game-container,
+#pong-game-container {
+  position: relative;
+  z-index: 10001;
+  overflow: visible !important;
+}
+
+.hangman-game button {
+  position: relative;
+  z-index: 10002;
+  margin: 3px;
+}
+
+.game-button {
+  position: relative;
+  z-index: 10002 !important;
+}
+
+/* Fix for the triangle pointer from speech bubble */
+#character-speech::after {
+  z-index: -1 !important;
+}
+
+/* Ensure keyboard buttons don't get overlapped */
+.hangman-keyboard button,
+.letter-button {
+  position: relative;
+  z-index: 10003 !important;
+}

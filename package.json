@@ -1,11 +1,21 @@
 {
-  "name": "portfolio-website",
-  "version": "1.0.0",
-  "description": "Personal Portfolio Website",
+  "name": "vishwa-3d-portfolio",
+  "version": "2.0.0",
+  "description": "3D Interactive Portfolio Website with Three.js, GSAP, and Particles.js",
   "scripts": {
-    "start": "servor --reload"
+    "dev": "python3 -m http.server 3000",
+    "start": "python3 -m http.server 8080",
+    "serve": "python3 -m http.server 3000",
+    "dev-node": "npx live-server --port=3000 --open=/index.html"
   },
-  "dependencies": {
-    "servor": "^4.0.2"
-  }
+  "keywords": [
+    "portfolio",
+    "3d",
+    "interactive",
+    "threejs",
+    "gsap",
+    "particles"
+  ],
+  "author": "Vishwa Karan",
+  "license": "MIT"
 }
