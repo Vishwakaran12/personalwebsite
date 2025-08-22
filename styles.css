@@ -31,12 +31,25 @@
     
     /* Improved text colors for better readability */
     --primary-text: #ffffff;
-    --secondary-text: #e8e8e8;
-    --muted-text: #c8c8c8;
-    --accent-text: #c9a876;
+    --secondary-text: #ecf0f1;
+    --muted-text: #bdc3c7;
+    --accent-text: #3498db;
     --gold-text: #d4c5a9;
     --bright-white: #ffffff;
     --title-text: #f0f0f0;
+    
+    /* Universal Theme Variables - These will be dynamically updated by themes */
+    --theme-primary: #3498db;
+    --theme-secondary: #2980b9;
+    --theme-accent: #5dade2;
+    --theme-text-primary: #ffffff;
+    --theme-text-secondary: #ecf0f1;
+    --theme-text-muted: #bdc3c7;
+    --theme-gradient: linear-gradient(135deg, #3498db, #2980b9);
+    --theme-gradient-alt: linear-gradient(45deg, #3498db, #5dade2);
+    --theme-background: linear-gradient(-45deg, #2c3e50, #34495e, #2c3e50, #34495e);
+    --theme-card-bg: rgba(52, 152, 219, 0.1);
+    --theme-border: rgba(52, 152, 219, 0.3);
 }
 
 body {
@@ -45,18 +58,18 @@ body {
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
-    background: var(--main-bg-gradient);
+    background: linear-gradient(-45deg, #2c3e50, #34495e, #2c3e50, #34495e);
     background-size: 400% 400%;
-    animation: gradient 20s ease infinite;
+    animation: gradient 30s ease infinite;
     perspective: 1000px;
     /* Mobile scroll improvements */
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
 }
 
-/* Global text visibility improvements */
+/* Universal heading styles - automatically inherit theme colors */
 h1, h2, h3, h4, h5, h6 {
-    background: var(--gold-gradient);
+    background: var(--theme-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -65,31 +78,39 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 1 !important;
 }
 
-p {
-    color: var(--secondary-text);
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-}
-
-/* Special styling for About Me and Languages sections to match name */
+/* Professional theme as default for headers */
 .profile-content h1,
 .profile-content h2,
 .languages h2,
 .languages h3,
 #about-me,
 .language-skill h3 {
-    background: var(--gold-gradient);
+    background: var(--theme-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: 0 0 15px rgba(201, 168, 118, 0.3);
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+    text-shadow: none;
+    filter: none;
 }
 
-/* About Me section text styling */
+/* Default name styling - uses theme gradient */
+.name {
+    background: var(--theme-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+p {
+    color: var(--secondary-text);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Special styling for About Me and Languages sections - professional default */
 .profile-content p,
 .profile-content .content-block p {
-    color: var(--champagne-gold) !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    color: var(--theme-text-secondary) !important;
+    text-shadow: none;
     line-height: 1.7;
 }
 
@@ -97,27 +118,50 @@ p {
 .languages .content-block,
 .languages .language-skill,
 .languages .language-header {
-    color: var(--champagne-gold) !important;
+    color: var(--theme-text-secondary) !important;
 }
 
 .languages .language-header strong {
-    color: var(--antique-gold) !important;
+    color: var(--theme-text-primary) !important;
     font-weight: 600;
 }
 
-/* Ensure all content has proper contrast */
-.glass-card h1,
-.glass-card h2, 
-.glass-card h3,
-.glass-card h4,
-.glass-card h5,
-.glass-card h6 {
-    color: #ffffff;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+/* Cards use theme variables */
+.glass-card {
+    background: var(--theme-card-bg) !important;
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--theme-border) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 15px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+body[data-theme="professional"] .project-card {
+    background: rgba(44, 62, 80, 0.9) !important;
+    border: 1px solid rgba(52, 152, 219, 0.3) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Professional theme progress bars */
+/* Progress bars use theme colors */
+.english-progress {
+    background: var(--theme-gradient) !important;
+}
+
+.telugu-progress {
+    background: var(--theme-gradient-alt) !important;
+}
+
+.hindi-progress {
+    background: var(--theme-gradient) !important;
 }
 
 .glass-card p {
-    color: var(--secondary-text);
+    color: var(--theme-text-secondary);
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 
@@ -132,13 +176,13 @@ p {
     pointer-events: none;
 }
 
-/* Project Card Styling - Enhanced Visibility */
+/* Project Card Styling - Uses theme variables */
 .project-card {
-    background: rgba(26, 26, 26, 0.95);
+    background: var(--theme-card-bg);
     backdrop-filter: blur(20px);
-    border: 1px solid var(--champagne-gold);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 
-                0 2px 8px rgba(201, 168, 118, 0.2),
+    border: 1px solid var(--theme-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 
+                0 2px 8px var(--theme-border),
                 inset 0 1px 0 rgba(245, 245, 245, 0.1);
     border-radius: 15px;
     padding: 2.5rem;
@@ -166,7 +210,7 @@ p {
 .project-card h4,
 .project-card h5,
 .project-card h6 {
-    background: var(--gold-gradient) !important;
+    background: var(--theme-gradient) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
     color: transparent !important;
@@ -178,7 +222,7 @@ p {
 }
 
 .project-card p {
-    color: var(--secondary-text);
+    color: var(--theme-text-secondary);
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
     line-height: 1.7;
     margin-bottom: 1rem;
@@ -498,11 +542,19 @@ p {
         box-sizing: border-box;
     }
     
-    /* Hide chatbot and games on mobile for now */
-    #floating-character,
-    #character-speech,
-    #konami-progress-container {
-        display: none !important;
+    /* Make chatbot smaller on mobile but keep it visible */
+    #floating-character {
+        width: 80px !important;
+        height: 80px !important;
+        bottom: 15px !important;
+        right: 15px !important;
+    }
+    
+    #character-speech {
+        width: 280px !important;
+        bottom: 110px !important;
+        right: 15px !important;
+        max-height: 50vh !important;
     }
 }
 
@@ -769,17 +821,17 @@ p {
 }
 
 .english-progress {
-    background: linear-gradient(90deg, var(--champagne-gold), var(--antique-gold));
+    background: linear-gradient(90deg, #3498db, #2980b9);
     --target-width: 100%;
 }
 
 .telugu-progress {
-    background: linear-gradient(90deg, var(--antique-gold), var(--champagne-gold));
+    background: linear-gradient(90deg, #2980b9, #3498db);
     --target-width: 100%;
 }
 
 .hindi-progress {
-    background: linear-gradient(90deg, var(--bronze-gold), var(--antique-gold));
+    background: linear-gradient(90deg, #5dade2, #3498db);
     --target-width: 60%;
 }
 
@@ -795,7 +847,7 @@ p {
 }
 
 .skill-percentage {
-    color: var(--champagne-gold);
+    color: var(--accent-text);
     font-weight: 600;
     font-size: 0.9rem;
 }
@@ -1021,17 +1073,16 @@ p {
     }
 }
 
-/* Floating Character - Lottie Animation */
 /* Floating Character - Cyberpunk Masked Anime Style */
 .floating-character {
     position: fixed;
-    bottom: 80px;
-    right: 30px;
+    bottom: 20px;
+    right: 20px;
     width: 120px;
     height: 120px;
     cursor: pointer;
     animation: character-float 4s ease-in-out infinite;
-    z-index: 1000;
+    z-index: 99999;
     transition: all 0.3s ease;
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
 }
@@ -1374,15 +1425,15 @@ p {
 }
 
 .holographic-text {
-    background: var(--gold-gradient);
+    background: var(--theme-gradient-alt);
     background-size: 200% 200%;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: elegant-shimmer 2s ease infinite;
     position: relative;
-    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.2));
+    text-shadow: none;
+    filter: none;
 }
 
 @keyframes elegant-shimmer {
@@ -1404,12 +1455,12 @@ p {
 
 /* Glass effect components */
 .glass-nav {
-    background: rgba(26, 26, 26, 0.95);
+    background: rgba(52, 73, 94, 0.15);
     backdrop-filter: blur(20px);
-    border: 1px solid var(--champagne-gold);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 
-                0 0 20px rgba(201, 168, 118, 0.15),
-                inset 0 1px 0 rgba(245, 245, 245, 0.1);
+    border: 1px solid rgba(52, 152, 219, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 
+                0 0 20px rgba(52, 152, 219, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     padding: 1.5rem 3rem;
     display: flex;
@@ -1433,12 +1484,12 @@ p {
 }
 
 .glass-card {
-    background: rgba(26, 26, 26, 0.9);
+    background: var(--theme-card-bg);
     backdrop-filter: blur(20px);
-    border: 1px solid var(--champagne-gold);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 
-                0 2px 8px rgba(201, 168, 118, 0.1),
-                inset 0 1px 0 rgba(245, 245, 245, 0.05);
+    border: 1px solid var(--theme-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 
+                0 2px 8px var(--theme-border),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     padding: 2.5rem;
     margin-bottom: 2rem;
@@ -1476,16 +1527,20 @@ p {
 /* Navigation */
 .name-title {
     font-size: 1.8rem;
-    color: white;
+    background: var(--theme-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     text-decoration: none;
     font-weight: bold;
     transition: all 0.3s;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: none;
     letter-spacing: 0.5px;
 }
 
 .name-title:hover {
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
+    filter: brightness(1.2);
 }
 
 .nav-links {
@@ -1546,9 +1601,9 @@ p {
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid var(--champagne-gold);
+    border: 3px solid var(--theme-primary);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 
-                0 0 20px rgba(201, 168, 118, 0.2),
+                0 0 20px var(--theme-border),
                 inset 0 0 20px rgba(30, 42, 74, 0.1);
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
     transition: all 0.4s ease;
@@ -1556,21 +1611,21 @@ p {
 
 .profile-image:hover {
     transform: scale(1.05);
-    border-color: rgba(255, 255, 255, 0.6);
+    border-color: var(--theme-accent);
     box-shadow: 0 8px 35px rgba(0, 0, 0, 0.4);
 }
 
 .gradient-text {
-    background: var(--gold-gradient);
+    background: var(--theme-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     font-size: 2.5rem;
     margin-bottom: 1rem;
     text-align: center;
-    text-shadow: 0 0 20px rgba(201, 168, 118, 0.3);
+    text-shadow: none;
     letter-spacing: 1px;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    filter: none;
 }
 
 .interests {
@@ -1591,11 +1646,11 @@ p {
 }
 
 .quality-card {
-    background: rgba(26, 26, 26, 0.9);
+    background: var(--theme-card-bg);
     backdrop-filter: blur(20px);
-    border: 1px solid var(--champagne-gold);
+    border: 1px solid var(--theme-border);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 
-                0 2px 8px rgba(201, 168, 118, 0.1),
+                0 2px 8px var(--theme-border),
                 inset 0 1px 0 rgba(245, 245, 245, 0.05);
     border-radius: 15px;
     padding: 2.5rem 2rem;
@@ -1612,7 +1667,7 @@ p {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--night-gradient);
+    background: var(--theme-gradient);
     opacity: 0.02;
     z-index: -1;
 }
@@ -1620,16 +1675,16 @@ p {
 .quality-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 
-                0 4px 12px rgba(201, 168, 118, 0.2),
+                0 4px 12px var(--theme-border),
                 inset 0 1px 0 rgba(245, 245, 245, 0.1);
-    border-color: var(--soft-gold);
+    border-color: var(--theme-accent);
 }
 
 .quality-icon {
     font-size: 3rem;
     margin-bottom: 1.5rem;
-    text-shadow: 0 0 15px rgba(201, 168, 118, 0.4);
-    background: var(--gold-gradient);
+    text-shadow: 0 0 15px var(--theme-border);
+    background: var(--theme-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -1637,16 +1692,19 @@ p {
 }
 
 .quality-title {
-    color: #ffffff;
+    background: var(--theme-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     font-size: 1.4rem;
     margin-bottom: 1rem;
     font-weight: 600;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: none;
     letter-spacing: 0.5px;
 }
 
 .quality-description {
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--theme-text-secondary);
     font-size: 1rem;
     line-height: 1.6;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -1662,18 +1720,18 @@ p {
 
 .social-link {
     text-decoration: none;
-    color: var(--primary-text);
+    color: var(--theme-text-primary);
     display: flex;
     align-items: center;
     gap: 1rem;
     padding: 1rem 1.5rem;
     transition: all 0.4s ease;
     border-radius: 12px;
-    background: rgba(26, 26, 26, 0.8);
+    background: var(--theme-card-bg);
     backdrop-filter: blur(15px);
-    border: 1px solid var(--champagne-gold);
+    border: 1px solid var(--theme-border);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 
-                0 1px 3px rgba(201, 168, 118, 0.1);
+                0 1px 3px var(--theme-border);
     position: relative;
     overflow: hidden;
 }
@@ -1698,20 +1756,23 @@ p {
 
 .social-link:hover {
     transform: translateX(8px);
-    background: rgba(26, 26, 26, 0.95);
-    border-color: var(--soft-gold);
+    background: var(--theme-card-bg);
+    border-color: var(--theme-accent);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 
-                0 2px 8px rgba(201, 168, 118, 0.2);
-    color: var(--gold-text);
+                0 2px 8px var(--theme-border);
+    color: var(--theme-text-primary);
 }
 
 /* Content Styling */
 .section-title {
     font-size: 2.2rem;
-    color: #ffffff;
+    background: var(--theme-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     margin-bottom: 2rem;
     position: relative;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: none;
     letter-spacing: 1px;
     font-weight: 600;
 }
@@ -1723,9 +1784,9 @@ p {
     left: 0;
     width: 60px;
     height: 2px;
-    background: var(--gold-gradient);
+    background: var(--theme-gradient);
     border-radius: 2px;
-    box-shadow: 0 0 8px rgba(201, 168, 118, 0.3);
+    box-shadow: 0 0 8px var(--theme-border);
 }
 
 .highlight-link {
@@ -1884,10 +1945,15 @@ p {
     }
 
     .floating-character {
-        width: 100px;
-        height: 100px;
-        bottom: 20px;
-        right: 20px;
+        width: 80px !important;
+        height: 80px !important;
+        bottom: 10px !important;
+        right: 10px !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: fixed !important;
+        z-index: 99999 !important;
     }
 
     .character-speech {

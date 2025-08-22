@@ -31,7 +31,7 @@ window.addEventListener('load', function() {
 	
 	// Apply saved customizations
 	setTimeout(() => {
-		applyBackgroundTheme(localStorage.getItem('bgTheme') || 'blue');
+		applyBackgroundTheme(localStorage.getItem('bgTheme') || 'professional');
 		applyParticleEffect(localStorage.getItem('particleEffect') || 'stars');
 		applyCharacterSticker(localStorage.getItem('characterSticker') || 'none');
 		applyClockStyle(localStorage.getItem('clockStyle') || 'none');

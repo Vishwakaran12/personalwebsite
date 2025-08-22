@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const style = document.createElement('style');
 		style.textContent = `
 			#character-speech { 
-				position: fixed; bottom: 180px; right: 20px; width: 360px; max-width: calc(100vw - 40px); max-height: 60vh; overflow: auto;
+				position: fixed; bottom: 160px; right: 20px; width: 360px; max-width: calc(100vw - 40px); max-height: 60vh; overflow: auto;
 				background: #1e2130; color: #fff; border: 2px solid #d4af37; border-radius: 12px; padding: 14px; display: none; z-index: 9999;
 				box-shadow: 0 0 20px rgba(0,0,0,0.5); backdrop-filter: blur(5px);
 			}
@@ -328,8 +328,10 @@ document.addEventListener('DOMContentLoaded', () => {
 			
 			// 1. Background Theme
 			const bgThemes = [
-				{name: 'Default Blue', value: 'blue', required: 0},
-				{name: 'Cyberpunk Night', value: 'cyberpunk', required: 20},
+				{name: 'Professional', value: 'professional', required: 0},
+				{name: 'Default Blue', value: 'blue', required: 10},
+				{name: 'Space Gold', value: 'spacegold', required: 20},
+				{name: 'Cyberpunk Night', value: 'cyberpunk', required: 30},
 				{name: 'Golden Elegance', value: 'gold', required: 40},
 				{name: 'Relaxing Sunset', value: 'sunset', required: 60},
 				{name: 'Cosmic Journey', value: 'cosmic', required: 80}
@@ -485,34 +487,127 @@ document.addEventListener('DOMContentLoaded', () => {
 		// Apply background theme
 		function applyBackgroundTheme(theme) {
 			const body = document.body;
+			const root = document.documentElement;
+			body.setAttribute('data-theme', theme);
+			
 			switch (theme) {
+				case 'professional':
+					body.style.background = 'linear-gradient(-45deg, #2c3e50, #34495e, #2c3e50, #34495e)';
+					body.style.backgroundSize = '400% 400%';
+					body.style.animation = 'gradient 30s ease infinite';
+					// Set theme variables
+					root.style.setProperty('--theme-primary', '#3498db');
+					root.style.setProperty('--theme-secondary', '#2980b9');
+					root.style.setProperty('--theme-accent', '#5dade2');
+					root.style.setProperty('--theme-text-primary', '#ffffff');
+					root.style.setProperty('--theme-text-secondary', '#ecf0f1');
+					root.style.setProperty('--theme-text-muted', '#bdc3c7');
+					root.style.setProperty('--theme-gradient', 'linear-gradient(135deg, #3498db, #2980b9)');
+					root.style.setProperty('--theme-gradient-alt', 'linear-gradient(45deg, #3498db, #5dade2)');
+					root.style.setProperty('--theme-card-bg', 'rgba(52, 152, 219, 0.15)');
+					root.style.setProperty('--theme-border', 'rgba(52, 152, 219, 0.4)');
+					break;
 				case 'blue':
 					body.style.background = 'linear-gradient(-45deg, #1a1d29, #0D47A1, #2d3748, #1565C0)';
 					body.style.backgroundSize = '400% 400%';
 					body.style.animation = 'gradient 20s ease infinite';
+					// Set theme variables
+					root.style.setProperty('--theme-primary', '#64b5f6');
+					root.style.setProperty('--theme-secondary', '#1565C0');
+					root.style.setProperty('--theme-accent', '#90caf9');
+					root.style.setProperty('--theme-text-primary', '#ffffff');
+					root.style.setProperty('--theme-text-secondary', '#e8e8e8');
+					root.style.setProperty('--theme-text-muted', '#bbbbbb');
+					root.style.setProperty('--theme-gradient', 'linear-gradient(135deg, #64b5f6, #1565C0)');
+					root.style.setProperty('--theme-gradient-alt', 'linear-gradient(45deg, #64b5f6, #90caf9)');
+					root.style.setProperty('--theme-card-bg', 'rgba(100, 181, 246, 0.1)');
+					root.style.setProperty('--theme-border', 'rgba(100, 181, 246, 0.3)');
+					break;
+				case 'spacegold':
+					body.style.background = 'var(--main-bg-gradient)';
+					body.style.backgroundSize = '400% 400%';
+					body.style.animation = 'gradient 20s ease infinite';
+					// Set theme variables
+					root.style.setProperty('--theme-primary', '#c9a876');
+					root.style.setProperty('--theme-secondary', '#b8932b');
+					root.style.setProperty('--theme-accent', '#d4c5a9');
+					root.style.setProperty('--theme-text-primary', '#ffffff');
+					root.style.setProperty('--theme-text-secondary', '#e8e8e8');
+					root.style.setProperty('--theme-text-muted', '#cccccc');
+					root.style.setProperty('--theme-gradient', 'linear-gradient(135deg, #c9a876, #b8932b, #a67c3a)');
+					root.style.setProperty('--theme-gradient-alt', 'linear-gradient(45deg, #c9a876, #d4c5a9)');
+					root.style.setProperty('--theme-card-bg', 'rgba(201, 168, 118, 0.1)');
+					root.style.setProperty('--theme-border', 'rgba(201, 168, 118, 0.3)');
 					break;
 				case 'cyberpunk':
 					body.style.background = 'linear-gradient(-45deg, #000000, #3a0647, #000000, #440a44)';
 					body.style.backgroundSize = '400% 400%';
 					body.style.animation = 'gradient 15s ease infinite';
+					// Set theme variables
+					root.style.setProperty('--theme-primary', '#ff0080');
+					root.style.setProperty('--theme-secondary', '#00ffff');
+					root.style.setProperty('--theme-accent', '#ff00ff');
+					root.style.setProperty('--theme-text-primary', '#ffffff');
+					root.style.setProperty('--theme-text-secondary', '#e8e8e8');
+					root.style.setProperty('--theme-text-muted', '#cccccc');
+					root.style.setProperty('--theme-gradient', 'linear-gradient(135deg, #ff0080, #00ffff)');
+					root.style.setProperty('--theme-gradient-alt', 'linear-gradient(45deg, #ff0080, #ff00ff)');
+					root.style.setProperty('--theme-card-bg', 'rgba(255, 0, 128, 0.1)');
+					root.style.setProperty('--theme-border', 'rgba(255, 0, 128, 0.3)');
 					break;
 				case 'gold':
 					body.style.background = 'linear-gradient(-45deg, #1a1700, #5c4500, #382a00, #aa8400)';
 					body.style.backgroundSize = '400% 400%';
 					body.style.animation = 'gradient 15s ease infinite';
+					// Set theme variables
+					root.style.setProperty('--theme-primary', '#ffd700');
+					root.style.setProperty('--theme-secondary', '#ffb347');
+					root.style.setProperty('--theme-accent', '#fff8dc');
+					root.style.setProperty('--theme-text-primary', '#ffffff');
+					root.style.setProperty('--theme-text-secondary', '#e8e8e8');
+					root.style.setProperty('--theme-text-muted', '#cccccc');
+					root.style.setProperty('--theme-gradient', 'linear-gradient(135deg, #ffd700, #ffb347)');
+					root.style.setProperty('--theme-gradient-alt', 'linear-gradient(45deg, #ffd700, #fff8dc)');
+					root.style.setProperty('--theme-card-bg', 'rgba(255, 215, 0, 0.1)');
+					root.style.setProperty('--theme-border', 'rgba(255, 215, 0, 0.3)');
 					break;
 				case 'sunset':
 					body.style.background = 'linear-gradient(-45deg, #ff7e5f, #feb47b, #ffb88c, #ff9966)';
 					body.style.backgroundSize = '400% 400%';
 					body.style.animation = 'gradient 25s ease infinite';
+					// Set theme variables
+					root.style.setProperty('--theme-primary', '#ff6b35');
+					root.style.setProperty('--theme-secondary', '#f7931e');
+					root.style.setProperty('--theme-accent', '#ffb347');
+					root.style.setProperty('--theme-text-primary', '#2c3e50');
+					root.style.setProperty('--theme-text-secondary', '#34495e');
+					root.style.setProperty('--theme-text-muted', '#5a6c7d');
+					root.style.setProperty('--theme-gradient', 'linear-gradient(135deg, #ff6b35, #f7931e)');
+					root.style.setProperty('--theme-gradient-alt', 'linear-gradient(45deg, #ff6b35, #ffb347)');
+					root.style.setProperty('--theme-card-bg', 'rgba(255, 107, 53, 0.1)');
+					root.style.setProperty('--theme-border', 'rgba(255, 107, 53, 0.3)');
 					break;
 				case 'cosmic':
 					body.style.background = 'linear-gradient(-45deg, #16122B, #1F2A44, #2C3E50, #1A1F3D)';
 					body.style.backgroundSize = '400% 400%';
 					body.style.animation = 'gradient 20s ease infinite';
+					// Set theme variables
+					root.style.setProperty('--theme-primary', '#9b59b6');
+					root.style.setProperty('--theme-secondary', '#8e44ad');
+					root.style.setProperty('--theme-accent', '#bb8fce');
+					root.style.setProperty('--theme-text-primary', '#ffffff');
+					root.style.setProperty('--theme-text-secondary', '#e8e8e8');
+					root.style.setProperty('--theme-text-muted', '#cccccc');
+					root.style.setProperty('--theme-gradient', 'linear-gradient(135deg, #9b59b6, #8e44ad)');
+					root.style.setProperty('--theme-gradient-alt', 'linear-gradient(45deg, #9b59b6, #bb8fce)');
+					root.style.setProperty('--theme-card-bg', 'rgba(155, 89, 182, 0.1)');
+					root.style.setProperty('--theme-border', 'rgba(155, 89, 182, 0.3)');
 					break;
 			}
 		}
+		
+		// Expose applyBackgroundTheme globally so it can be called from index.html
+		window.applyBackgroundTheme = applyBackgroundTheme;
 		
 		// Apply particle effect
 		function applyParticleEffect(effect) {
@@ -1602,35 +1697,67 @@ Type any question or use these commands to explore the portfolio!
 				}
 			});
 			
-			// Hide bot on double click
+			// Hide/Show bot on double click with toggle
+			let isCharacterHidden = false;
 			character.addEventListener('dblclick', (e) => {
 				e.preventDefault();
 				e.stopPropagation();
 				console.log('Character double-clicked');
 				
-				// Hide speech
-				if (speech) {
-					speech.style.opacity = '0';
-					speech.style.visibility = 'hidden';
-				}
-				
-				// Animate character hiding
-				if (typeof gsap !== 'undefined') {
-					gsap.to(character, {
-						opacity: 0.5,
-						scale: 0.8,
-						duration: 0.3,
-						ease: "power2.out"
-					});
+				if (!isCharacterHidden) {
+					// Hide character
+					isCharacterHidden = true;
+					
+					// Hide speech
+					if (speech) {
+						speech.style.opacity = '0';
+						speech.style.visibility = 'hidden';
+					}
+					
+					// Animate character hiding
+					if (typeof gsap !== 'undefined') {
+						gsap.to(character, {
+							opacity: 0.3,
+							scale: 0.7,
+							duration: 0.3,
+							ease: "power2.out"
+						});
+					} else {
+						character.style.opacity = '0.3';
+						character.style.transform = 'scale(0.7)';
+					}
+					
+					// Hide chat container
+					const chatContainer = document.getElementById('chatContainer');
+					if (chatContainer) {
+						chatContainer.style.display = 'none';
+					}
+					
+					console.log('Character hidden');
 				} else {
-					character.style.opacity = '0.5';
-					character.style.transform = 'scale(0.8)';
-				}
-				
-				// Hide chat container
-				const chatContainer = document.getElementById('chatContainer');
-				if (chatContainer) {
-					chatContainer.style.display = 'none';
+					// Show character
+					isCharacterHidden = false;
+					
+					// Show speech
+					if (speech) {
+						speech.style.opacity = '1';
+						speech.style.visibility = 'visible';
+					}
+					
+					// Animate character showing
+					if (typeof gsap !== 'undefined') {
+						gsap.to(character, {
+							opacity: 1,
+							scale: 1,
+							duration: 0.3,
+							ease: "power2.out"
+						});
+					} else {
+						character.style.opacity = '1';
+						character.style.transform = 'scale(1)';
+					}
+					
+					console.log('Character shown');
 				}
 			});
 			

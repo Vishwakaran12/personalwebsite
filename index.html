@@ -7,27 +7,66 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Vishwa Belaganti - Academic Profile</title>
-    <link rel="stylesheet" href="styles.css?v=2025-08-21-5">
-    <link rel="stylesheet" href="friendship.css">
-    <link rel="stylesheet" href="game-fixes.css">
+    <link rel="stylesheet" href="styles.css?v=2025-08-21-27">
+    <link rel="stylesheet" href="friendship.css?v=2025-08-21-16">
+    <link rel="stylesheet" href="game-fixes.css?v=2025-08-21-16">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     
-    <!-- 3D and Animation Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="particles.js"></script>
+    <script src="particles.js?v=2025-08-21-16"></script>
+    
+    <!-- Early theme initialization -->
+    <script>
+        // Force cyberpunk theme as default - clear any existing preferences
+        (function() {
+            // Force set cyberpunk as the default theme
+            localStorage.setItem('bgTheme', 'cyberpunk');
+            const savedTheme = 'cyberpunk';
+            const root = document.documentElement;
+            const body = document.body || document.getElementsByTagName('body')[0];
+            
+            // Force clear any existing theme classes
+            if (body) {
+                body.removeAttribute('data-theme');
+                body.setAttribute('data-theme', savedTheme);
+            }
+            
+            // Set theme variables for cyberpunk theme (default) - FORCE UPDATE
+            root.style.setProperty('--theme-primary', '#ff0080');
+            root.style.setProperty('--theme-secondary', '#00ffff');
+            root.style.setProperty('--theme-accent', '#ff00ff');
+            root.style.setProperty('--theme-text-primary', '#ffffff');
+            root.style.setProperty('--theme-text-secondary', '#e8e8e8');
+            root.style.setProperty('--theme-text-muted', '#cccccc');
+            root.style.setProperty('--theme-gradient', 'linear-gradient(135deg, #ff0080, #00ffff)');
+            root.style.setProperty('--theme-gradient-alt', 'linear-gradient(45deg, #ff0080, #ff00ff)');
+            root.style.setProperty('--theme-card-bg', 'rgba(255, 0, 128, 0.1)');
+            root.style.setProperty('--theme-border', 'rgba(255, 0, 128, 0.3)');
+            
+            // Set background immediately
+            if (body) {
+                body.style.background = 'linear-gradient(-45deg, #000000, #3a0647, #000000, #440a44)';
+                body.style.backgroundSize = '400% 400%';
+                body.style.animation = 'gradient 15s ease infinite';
+            }
+        })();
+    </script>
     <script src="snake-game.js"></script>
     <script src="pong-game.js"></script>
     <script src="interactive-options.js"></script>
     <script src="games.js"></script>
-    <script src="chatbot.js"></script>
+    <script src="chatbot.js?v=2025-08-21-27"></script>
     <script src="friendship.js"></script>
     <script src="konami-game.js"></script>
     <script src="trivia-quiz.js"></script>
 </head>
-<body>
+<body data-theme="cyberpunk">
     <div id="particles-js"></div>
     
     <!-- Floating 3D Elements -->
@@ -181,6 +220,44 @@
         AOS.init({
             duration: 1000,
             once: true
+        });
+
+        // Simple positioning fix
+        function ensureCharacterPosition() {
+            const character = document.getElementById('floating-character');
+            if (character) {
+                character.style.position = 'fixed';
+                character.style.bottom = '20px';
+                character.style.right = '20px';
+                character.style.zIndex = '99999';
+                
+                console.log('Character positioned');
+            }
+        }
+
+        // Run on load
+        window.addEventListener('load', ensureCharacterPosition);
+        window.addEventListener('DOMContentLoaded', ensureCharacterPosition);
+        
+        // Force apply cyberpunk theme on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Wait a moment for chatbot.js to load, then apply cyberpunk theme
+            setTimeout(() => {
+                if (window.applyBackgroundTheme) {
+                    window.applyBackgroundTheme('cyberpunk');
+                    console.log('Cyberpunk theme applied on load');
+                } else {
+                    // If applyBackgroundTheme isn't available yet, manually apply
+                    const body = document.body;
+                    const root = document.documentElement;
+                    body.setAttribute('data-theme', 'cyberpunk');
+                    body.style.background = 'linear-gradient(-45deg, #000000, #3a0647, #000000, #440a44)';
+                    body.style.backgroundSize = '400% 400%';
+                    body.style.animation = 'gradient 15s ease infinite';
+                    localStorage.setItem('bgTheme', 'cyberpunk');
+                    console.log('Cyberpunk theme applied manually');
+                }
+            }, 100);
         });
 
         // Animate language progress bars on page load
@@ -1835,6 +1912,34 @@
                         navLinks.classList.remove('active');
                     }
                 });
+            }
+        });
+        
+        // Initialize theme system on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default professional theme if none exists
+            const savedTheme = localStorage.getItem('bgTheme') || 'professional';
+            const root = document.documentElement;
+            const body = document.body;
+            
+            // Apply professional theme as default
+            body.setAttribute('data-theme', savedTheme);
+            
+            // Set theme variables for professional theme
+            if (savedTheme === 'professional') {
+                root.style.setProperty('--theme-primary', '#3498db');
+                root.style.setProperty('--theme-secondary', '#2980b9');
+                root.style.setProperty('--theme-accent', '#5dade2');
+                root.style.setProperty('--theme-text-primary', '#ffffff');
+                root.style.setProperty('--theme-text-secondary', '#ecf0f1');
+                root.style.setProperty('--theme-text-muted', '#bdc3c7');
+                root.style.setProperty('--theme-gradient', 'linear-gradient(135deg, #3498db, #2980b9)');
+                root.style.setProperty('--theme-gradient-alt', 'linear-gradient(45deg, #3498db, #5dade2)');
+                root.style.setProperty('--theme-card-bg', 'rgba(52, 152, 219, 0.1)');
+                root.style.setProperty('--theme-border', 'rgba(52, 152, 219, 0.3)');
+                body.style.background = 'linear-gradient(-45deg, #2c3e50, #34495e, #2c3e50, #34495e)';
+                body.style.backgroundSize = '400% 400%';
+                body.style.animation = 'gradient 30s ease infinite';
             }
         });
     </script>
