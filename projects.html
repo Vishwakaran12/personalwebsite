@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Vishwa Belaganti - Projects</title>
-    <link rel="stylesheet" href="styles.css?v=2025-08-21-11">
+    <link rel="stylesheet" href="styles.css?v=2025-08-21-27">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
@@ -17,8 +17,46 @@
     <script src="pong-game.js"></script>
     <script src="interactive-options.js"></script>
     <script src="games.js"></script>
+    <script src="chatbot.js?v=2025-08-21-27"></script>
     <script src="konami-game.js"></script>
     <script src="trivia-quiz.js"></script>
+    
+    <!-- Early theme initialization -->
+    <script>
+        // Force cyberpunk theme as default - clear any existing preferences
+        (function() {
+            // Force set cyberpunk as the default theme
+            localStorage.setItem('bgTheme', 'cyberpunk');
+            const savedTheme = 'cyberpunk';
+            const root = document.documentElement;
+            const body = document.body || document.getElementsByTagName('body')[0];
+            
+            // Force clear any existing theme classes
+            if (body) {
+                body.removeAttribute('data-theme');
+                body.setAttribute('data-theme', savedTheme);
+            }
+            
+            // Set theme variables for cyberpunk theme (default) - FORCE UPDATE
+            root.style.setProperty('--theme-primary', '#ff0080');
+            root.style.setProperty('--theme-secondary', '#00ffff');
+            root.style.setProperty('--theme-accent', '#ff00ff');
+            root.style.setProperty('--theme-text-primary', '#ffffff');
+            root.style.setProperty('--theme-text-secondary', '#e8e8e8');
+            root.style.setProperty('--theme-text-muted', '#cccccc');
+            root.style.setProperty('--theme-gradient', 'linear-gradient(135deg, #ff0080, #00ffff)');
+            root.style.setProperty('--theme-gradient-alt', 'linear-gradient(45deg, #ff0080, #ff00ff)');
+            root.style.setProperty('--theme-card-bg', 'rgba(255, 0, 128, 0.1)');
+            root.style.setProperty('--theme-border', 'rgba(255, 0, 128, 0.3)');
+            
+            // Set background immediately
+            if (body) {
+                body.style.background = 'linear-gradient(-45deg, #000000, #3a0647, #000000, #440a44)';
+                body.style.backgroundSize = '400% 400%';
+                body.style.animation = 'gradient 15s ease infinite';
+            }
+        })();
+    </script>
     
     <style>
         .project-card {
@@ -179,7 +217,7 @@
         }
     </style>
 </head>
-<body>
+<body data-theme="cyberpunk">
     <div id="particles-js"></div>
     
     <!-- Floating 3D Elements -->
@@ -378,40 +416,66 @@
             once: true
         });
 
-        // Initialize Particles.js - Optimized
+        // Initialize Enhanced Particles.js with Golden Geometric Particles (Default)
         particlesJS('particles-js', {
             particles: {
-                number: { value: 25, density: { enable: true, value_area: 1000 } },
-                color: { value: ['#d4af37', '#6c63ff'] },
-                shape: { type: 'circle' },
-                opacity: { value: 0.25, random: true },
-                size: { value: 2, random: true },
+                number: { value: 50, density: { enable: true, value_area: 800 } },
+                color: { value: ['#d4af37', '#ffd700', '#ffb347', '#b8932b', '#a67c3a', '#8b7355'] },
+                shape: {
+                    type: ['circle', 'edge', 'triangle', 'polygon'],
+                    stroke: { width: 2, color: '#d4af37' },
+                    polygon: { nb_sides: 6 },
+                    image: { src: 'img/github.svg', width: 100, height: 100 }
+                },
+                opacity: {
+                    value: 0.6,
+                    random: true,
+                    anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+                },
+                size: {
+                    value: 4,
+                    random: true,
+                    anim: { enable: true, speed: 2, size_min: 0.1, sync: false }
+                },
                 line_linked: {
                     enable: true,
-                    distance: 100,
+                    distance: 150,
                     color: '#d4af37',
-                    opacity: 0.15,
+                    opacity: 0.4,
                     width: 1
                 },
                 move: {
                     enable: true,
-                    speed: 1,
+                    speed: 1.5,
                     direction: 'none',
-                    random: true,
+                    random: false,
                     straight: false,
                     out_mode: 'out',
-                    bounce: false
+                    bounce: false,
+                    attract: { enable: true, rotateX: 600, rotateY: 1200 }
                 }
             },
             interactivity: {
                 detect_on: 'canvas',
                 events: {
-                    onhover: { enable: true, mode: 'grab' },
-                    onclick: { enable: false },
+                    onhover: { enable: true, mode: ['grab', 'bubble'] },
+                    onclick: { enable: true, mode: ['push', 'repulse'] },
                     resize: true
                 },
                 modes: {
-                    grab: { distance: 120, line_linked: { opacity: 0.3 } }
+                    grab: { 
+                        distance: 200, 
+                        line_linked: { opacity: 0.8 } 
+                    },
+                    bubble: { 
+                        distance: 250, 
+                        size: 8, 
+                        duration: 2, 
+                        opacity: 0.8, 
+                        speed: 3 
+                    },
+                    push: { particles_nb: 4 },
+                    repulse: { distance: 120, duration: 0.4 }
                 }
             },
             retina_detect: true
@@ -496,7 +560,58 @@
         });
     </script>
     
+    <!-- Apply cyberpunk theme on page load -->
+    <script>
+        // Force apply cyberpunk theme IMMEDIATELY and repeatedly
+        function applyCyberpunkTheme() {
+            const body = document.body;
+            const root = document.documentElement;
+            
+            // Force theme attributes
+            body.setAttribute('data-theme', 'cyberpunk');
+            localStorage.setItem('bgTheme', 'cyberpunk');
+            
+            // Apply cyberpunk background and colors
+            body.style.background = 'linear-gradient(-45deg, #000000, #3a0647, #000000, #440a44)';
+            body.style.backgroundSize = '400% 400%';
+            body.style.animation = 'gradient 15s ease infinite';
+            
+            // Set all theme variables
+            root.style.setProperty('--theme-primary', '#ff0080');
+            root.style.setProperty('--theme-secondary', '#00ffff');
+            root.style.setProperty('--theme-accent', '#ff00ff');
+            root.style.setProperty('--theme-text-primary', '#ffffff');
+            root.style.setProperty('--theme-text-secondary', '#e8e8e8');
+            root.style.setProperty('--theme-text-muted', '#cccccc');
+            root.style.setProperty('--theme-gradient', 'linear-gradient(135deg, #ff0080, #00ffff)');
+            root.style.setProperty('--theme-gradient-alt', 'linear-gradient(45deg, #ff0080, #ff00ff)');
+            root.style.setProperty('--theme-card-bg', 'rgba(255, 0, 128, 0.1)');
+            root.style.setProperty('--theme-border', 'rgba(255, 0, 128, 0.3)');
+            
+            console.log('Cyberpunk theme applied to projects page');
+        }
+        
+        // Apply immediately
+        applyCyberpunkTheme();
+        
+        // Apply on DOM ready
+        document.addEventListener('DOMContentLoaded', applyCyberpunkTheme);
+        
+        // Apply on window load as backup
+        window.addEventListener('load', applyCyberpunkTheme);
+        
+        // Also try with chatbot.js function if available
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                if (window.applyBackgroundTheme) {
+                    window.applyBackgroundTheme('cyberpunk');
+                    console.log('Cyberpunk theme applied via chatbot function');
+                }
+            }, 200);
+        });
+    </script>
+    
     <!-- Load the chatbot script at the very end to ensure it runs after the page is fully loaded -->
-    <script src="chatbot.js"></script>
+    <script src="chatbot.js?v=2025-08-21-27"></script>
 </body>
 </html>
