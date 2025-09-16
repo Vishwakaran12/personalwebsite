@@ -215,6 +215,39 @@
             background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), transparent);
             border-radius: 3px;
         }
+
+        /* GitHub icon button for project cards */
+        .project-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .icon-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 10px;
+            background: linear-gradient(90deg, rgba(255,0,128,0.12), rgba(0,255,255,0.06));
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.08);
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .icon-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 18px rgba(255,0,128,0.06);
+        }
+
+        .icon-btn .fa-github {
+            font-size: 1.05rem;
+        }
     </style>
 </head>
 <body data-theme="cyberpunk">
@@ -261,7 +294,148 @@
         </div>
 
         <div class="content-wrapper">
-        
+
+        <!-- New: Proibe -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="50">
+            <div class="project-header">
+                <div class="project-title-group">
+                    <h3 class="project-title">Proibe</h3>
+                </div>
+                <span class="project-timeline">2025</span>
+            </div>
+            <div class="project-description">
+                <p>
+                    Welcome to Proibe — effortless, beautiful note-taking for creative minds. Organize, visualize,
+                    and enjoy your ideas with flexible blocks, intuitive editing, and visual exports.
+                </p>
+            </div>
+            <div class="key-features">
+                <h4>Key Features</h4>
+                <ul>
+                    <li>Flexible Blocks: mix text, images, icons, tables, and banners</li>
+                    <li>Intuitive Editing: click, drag, and drop with zero friction</li>
+                    <li>Visual Exports: print or save notes as beautiful PDFs</li>
+                    <li>Lofi Focus: built-in music player for a calm workspace</li>
+                    <li>Print-Ready: export clean, readable notes for sharing</li>
+                    <li>Modern & Responsive UI across devices</li>
+                    <li>AI tools: flashcard & quiz maker, summarizer, math type, and more</li>
+                </ul>
+            </div>
+            <div class="skills-section">
+                <h4>Technologies & Skills</h4>
+                <div class="skills-grid">
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">Gemini API</span>
+                    <span class="skill-tag">Tailwindjs</span>
+                    <span class="skill-tag">and more</span>
+                </div>
+            </div>
+            <div class="skills-section">
+                <h4>Links & Actions</h4>
+                <div class="skills-grid">
+                    <a class="skill-tag" href="https://vishwakaran12.github.io/proibe/" target="_blank" rel="noopener noreferrer">Open App</a>
+                </div>
+                <div class="project-actions">
+                    <a class="icon-btn" href="https://github.com/Vishwakaran12/proibe" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-github"></i>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- New: Codet — Interview Prep -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="75">
+            <div class="project-header">
+                <div class="project-title-group">
+                    <h3 class="project-title">Codet — Interview Prep</h3>
+                </div>
+                <span class="project-timeline">2024–2025</span>
+            </div>
+            <div class="project-description">
+                <p>
+                    Codet is an interactive, company-specific interview preparation assistant generating tailored
+                    practice questions, feedback, and a personalized roadmap based on user resume and role details.
+                </p>
+            </div>
+            <div class="key-features">
+                <h4>Key Features</h4>
+                <ul>
+                    <li>Company-specific prep and tailored question sets</li>
+                    <li>Interactive feedback with hint mode and staged interviewer responses</li>
+                    <li>Resume & document feedback with guided improvements</li>
+                    <li>Multiple modes: Technical, Coding-only, Behavioral (STAR)</li>
+                </ul>
+            </div>
+            <div class="skills-section">
+                <h4>Inputs & Outputs</h4>
+                <div class="skills-grid">
+                    <span class="skill-tag">Inputs: company, role, difficulty, resume/docs</span>
+                    <span class="skill-tag">Outputs: tailored questions, feedback, roadmap</span>
+                </div>
+                <div class="project-actions">
+                    <a class="icon-btn" href="https://github.com/IamAryanDubey/Codet" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-github"></i>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="key-features">
+                <h4>Roadmap & Backend Notes</h4>
+                <ul>
+                    <li>Day 1: Database models for sessions, messages, and questions</li>
+                    <li>Day 2: Essential APIs for session lifecycle and messaging</li>
+                    <li>Day 3: Move AI calls (Gemini) to backend for centralized processing</li>
+                    <li>Day 4: Frontend integration replacing localStorage with API calls and sync</li>
+                </ul>
+                <p>Roadmap: <a href="https://docs.google.com/spreadsheets/d/17IiC9aYTLCL4Gak3jNw7vV5aOx2Si-9vsy8qpMYkwF0/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Google Roadmap</a></p>
+            </div>
+        </div>
+
+        <!-- New: The Prospector -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="project-header">
+                <div class="project-title-group">
+                    <h3 class="project-title">The Prospector</h3>
+                </div>
+                <span class="project-timeline">Hackathon Pitch</span>
+            </div>
+            <div class="project-description">
+                <p>
+                    The Prospector centralizes event discovery by scraping public communities and transforming
+                    unstructured text into a clean, visual dashboard of actionable events — find events, save "wishes",
+                    and explore connections.
+                </p>
+            </div>
+            <div class="key-features">
+                <h4>Key Features</h4>
+                <ul>
+                    <li>Event discovery with keyword & location search</li>
+                    <li>Interactive dashboard showing event cards (name, date, description)</li>
+                    <li>AI-powered extraction (Gemini) to convert unstructured content into structured data</li>
+                    <li>Persistent "Wishes" stored in MongoDB</li>
+                    <li>Optional network graph visualization (D3.js)</li>
+                </ul>
+            </div>
+            <div class="skills-section">
+                <h4>Tech Stack & Quick Start</h4>
+                <div class="skills-grid">
+                    <span class="skill-tag">Next.js</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">Gemini API</span>
+                    <span class="skill-tag">D3.js</span>
+                </div>
+                <p style="margin-top:0.8rem;">Quick Start: clone, npm install, set MONGODB_URI, SESSION_SECRET, GEMINI_API_KEY, then <em>npm run dev</em>.</p>
+                <div class="project-actions">
+                    <a class="icon-btn" href="https://github.com/Vishwakaran12/The-Prospector" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-github"></i>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <!-- HackWest Texas -->
         <div class="project-card" data-aos="fade-up" data-aos-delay="100">
             <div class="project-header">
@@ -391,6 +565,8 @@
                 </div>
             </div>
         </div>
+        
+        
         </div>
     </div>
 
